@@ -17,7 +17,7 @@ load_dotenv()
 openai.api_key = os.getenv('OPENAI_API_KEY')
 
 def csv_agent(data,query):
-    df=pd.read_csv(data)
+    df = pd.read_csv(data, encoding='ISO-8859-1')
     agent = create_pandas_dataframe_agent(
     ChatOpenAI(temperature=0, model="gpt-3.5-turbo"),
     df,

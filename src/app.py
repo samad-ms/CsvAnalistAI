@@ -6,7 +6,14 @@ def home_tab():
     """ Home Tab """
     st.title("🔍 Welcome to CsvAnalistAI !")
     st.write("""
-    
+        CsvAnalystAI is a Streamlit application designed to help users interact with their CSV data through natural language queries and generate visualizations.
+
+        ## Features
+        - **Chat with CSV**: Upload your CSV and ask questions in natural language.
+        - **Chat and Visualize with CSV**: Generate graphs based on your queries.
+        - **Auto Summarizer**: Automatically summarize your CSV data and generate visualizations.
+        - **Additional Features**: Stay tuned for more exciting features!
+             
         #### Links:
         - [GitHub Repository](https://github.com/samad-ms/)
         - [LinkedIn Profile](https://www.linkedin.com/in/abdul-samad-86b158243/)
@@ -24,8 +31,22 @@ def chat_with_csv_tab():
     with st.expander("💡 Tips", expanded=False):
         st.write(
         """
-           * workflow guidance !
-           * it comes soon..............
+            #### Workflow:
+
+            ###### 1. Upload CSV:
+
+                Click on the "Upload CSV" button and select your CSV file.
+                Type Your Query:
+
+            ###### 2. Enter your question in the text area.
+
+                Example: "What are the key insights in the dataset?"
+                Submit Query:
+
+            ###### 3. Click the "Submit Query" button.
+            See the Result:
+
+            The response will be displayed, showing insights or answers based on your query.
         """
         )
 
@@ -46,8 +67,22 @@ def chat_and_visualize_with_csv_tab():
     with st.expander("💡 Tips", expanded=False):
         st.write(
         """
-           * workflow guidance !
-           * it comes soon..............
+**Workflow:**
+
+1. **Upload CSV**:
+   - Click on the "Upload CSV" button and select your CSV file.
+
+   **Are you confused about what to query for generating graphs? Click the suggestion button to get suggestions.**
+2. **Query your Data to Generate Graph**:
+   - Enter your question in the text area.
+   - Example: "Show me a bar chart of sales data."
+
+3. **Generate Graph**:
+   - Click the "Generate Graph" button.
+
+4. **See the Result**:
+   - The response will be displayed, showing insights or answers based on your query.
+   - Relevant visualizations, such as charts or graphs, will also be generated and displayed.
         """
         )
 
@@ -58,7 +93,7 @@ def chat_and_visualize_with_csv_tab():
         path_to_save = "filename1.csv"
         with open(path_to_save, "wb") as f:
             f.write(file_uploader.getvalue())
-        if st.button("Are you confused , about what to query for generate, click here to get suggesions",type='secondary'):
+        if st.button("Are you confused about what to query for generating graphs? Click the suggestion button to get suggestions.",type='secondary'):
             goals=get_suggestions()
             for i,goal in enumerate(goals):
                 st.markdown(f"{i+1}. {goal.question}  \n{goal.visualization}.  \n{goal.rationale}")
@@ -80,16 +115,25 @@ def chat_and_visualize_with_csv_tab():
                     with col2:
                         st.image(img2)
 
-
 #----------------------------------------------------------------------------------------
 def Auto_summarizer_tab():
     """ Auto_summarizer_tab """
     st.title("🔍 Summarization of your Data Automatically with visulizations!")
     with st.expander("💡 Tips", expanded=False):
         st.write("""
-        many more exciting features to come!
-        
-        Share your thoughts and ideas to integrate, and also, welcome to contributions and debugging!
+        **Auto Summarization Workflow:**
+
+        1. **Upload CSV:**
+
+        - Click on the "Upload CSV" button and select your CSV file.
+
+        2. **Summarize Data:**
+
+        - Click the "Summarize" button to generate a summary of your data.
+
+        3. **View Summary:**
+
+        - The summarized data will be displayed, including key insights and visualizations.
         """)
 
 
@@ -108,6 +152,29 @@ def Auto_summarizer_tab():
             st.image(goal_and_img[3])
         st.write(decode_json_to_natural_language(summary))
 #----------------------------------------------------------------------------------------
+def additional_tab():
+    """ Home Tab """
+    st.title("🔍 Additional Features Coming Soon!")
+    st.write("""
+        Thank you for visiting CsvAnalystAI! We are constantly working on new features to enhance your experience. Here's a sneak peek at what's coming next:
+
+        ## Future Features
+        - **Advanced Visualization**: Explore more interactive and insightful visualizations for your CSV data.
+        - **Enhanced Data Summarization**: Get even more detailed and comprehensive summaries of your data.
+        - **Custom Analysis**: Tailor the analysis to your specific needs with customizable options.
+        - **Improved User Interface**: Enjoy a more user-friendly and intuitive interface for better navigation.
+
+        #### Stay Updated
+        - Follow our progress on [GitHub](https://github.com/samad-ms/) for the latest updates and releases.
+        - Connect with us on [LinkedIn](https://www.linkedin.com/in/abdul-samad-86b158243/) to stay in the loop.
+
+        We're excited to bring you these new features and more in the near future. Stay tuned!
+    """)
+    st.write("### Welcome Contributions!")
+    st.write("We welcome contributions from the community to improve JobInsights. Whether it's adding new features, fixing bugs, or enhancing documentation, every contribution matters!")
+
+
+
 if __name__ == "__main__":
     st.set_page_config(page_title="CsvAnalistAI - A Complete CSV Analyst",page_icon='🔍')
     feature_tabs = st.sidebar.radio(
@@ -125,7 +192,7 @@ if __name__ == "__main__":
     elif feature_tabs == "**Chat and Visualize The CSV**":
         chat_and_visualize_with_csv_tab()
     elif feature_tabs == "**Additional features**":
-        pass
+        additional_tab()
 
     st.sidebar.markdown("""
     <style>
